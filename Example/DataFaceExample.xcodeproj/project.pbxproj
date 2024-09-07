@@ -11,7 +11,12 @@
 		232B1B9E2C8A478C00747136 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B1B9D2C8A478C00747136 /* SceneDelegate.swift */; };
 		232B1BA52C8A478E00747136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232B1BA42C8A478E00747136 /* Assets.xcassets */; };
 		232B1BA82C8A478E00747136 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 232B1BA72C8A478E00747136 /* Base */; };
-		232B1BB12C8A4CC700747136 /* DataFace in Frameworks */ = {isa = PBXBuildFile; productRef = 232B1BB02C8A4CC700747136 /* DataFace */; };
+		232B1BBB2C8C2DB500747136 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B1BBA2C8C2DB500747136 /* TabbarController.swift */; };
+		23C43BBF2C8C4A160005D948 /* DataFace in Frameworks */ = {isa = PBXBuildFile; productRef = 23C43BBE2C8C4A160005D948 /* DataFace */; };
+		23C43BC12C8C4A1A0005D948 /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 23C43BC02C8C4A1A0005D948 /* Epoxy */; };
+		23C43BC52C8C5E090005D948 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C43BC42C8C5E090005D948 /* CustomLabel.swift */; };
+		23C43BC82C8C6FE30005D948 /* Showcase.json in Resources */ = {isa = PBXBuildFile; fileRef = 23C43BC72C8C6FE30005D948 /* Showcase.json */; };
+		23C43BCA2C8C92FE0005D948 /* ListItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C43BC92C8C92FE0005D948 /* ListItemsFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +26,10 @@
 		232B1BA42C8A478E00747136 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		232B1BA72C8A478E00747136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		232B1BA92C8A478E00747136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		232B1BBA2C8C2DB500747136 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		23C43BC42C8C5E090005D948 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		23C43BC72C8C6FE30005D948 /* Showcase.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Showcase.json; sourceTree = "<group>"; };
+		23C43BC92C8C92FE0005D948 /* ListItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemsFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,7 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				232B1BB12C8A4CC700747136 /* DataFace in Frameworks */,
+				23C43BC12C8C4A1A0005D948 /* Epoxy in Frameworks */,
+				23C43BBF2C8C4A160005D948 /* DataFace in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,19 +80,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		232B1BB22C8A508D00747136 /* Supported Files */ = {
+		232B1BB22C8A508D00747136 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				232B1B9D2C8A478C00747136 /* SceneDelegate.swift */,
 				232B1B9B2C8A478C00747136 /* AppDelegate.swift */,
 			);
-			path = "Supported Files";
+			path = Application;
 			sourceTree = "<group>";
 		};
 		232B1BB72C8A525800747136 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				232B1BB22C8A508D00747136 /* Supported Files */,
+				23C43BC32C8C5D240005D948 /* ViewControllers */,
+				23C43BC22C8C5D010005D948 /* Views */,
+				232B1BB22C8A508D00747136 /* Application */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -90,11 +102,45 @@
 		232B1BB82C8A527900747136 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				23C43BC62C8C6FCA0005D948 /* Data */,
 				232B1BA92C8A478E00747136 /* Info.plist */,
 				232B1BA62C8A478E00747136 /* LaunchScreen.storyboard */,
 				232B1BA42C8A478E00747136 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		232B1BB92C8C2D9300747136 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				232B1BBA2C8C2DB500747136 /* TabbarController.swift */,
+				23C43BC92C8C92FE0005D948 /* ListItemsFactory.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		23C43BC22C8C5D010005D948 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				23C43BC42C8C5E090005D948 /* CustomLabel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		23C43BC32C8C5D240005D948 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				232B1BB92C8C2D9300747136 /* Tabbar */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		23C43BC62C8C6FCA0005D948 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				23C43BC72C8C6FE30005D948 /* Showcase.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,7 +160,8 @@
 			);
 			name = DataFaceExample;
 			packageProductDependencies = (
-				232B1BB02C8A4CC700747136 /* DataFace */,
+				23C43BBE2C8C4A160005D948 /* DataFace */,
+				23C43BC02C8C4A1A0005D948 /* Epoxy */,
 			);
 			productName = DataFaceExample;
 			productReference = 232B1B982C8A478C00747136 /* DataFaceExample.app */;
@@ -144,6 +191,9 @@
 				Base,
 			);
 			mainGroup = 232B1B8F2C8A478C00747136;
+			packageReferences = (
+				23C43BB12C8C338D0005D948 /* XCRemoteSwiftPackageReference "epoxy-ios" */,
+			);
 			productRefGroup = 232B1B992C8A478C00747136 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -159,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				232B1BA52C8A478E00747136 /* Assets.xcassets in Resources */,
+				23C43BC82C8C6FE30005D948 /* Showcase.json in Resources */,
 				232B1BA82C8A478E00747136 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,6 +222,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				232B1B9C2C8A478C00747136 /* AppDelegate.swift in Sources */,
+				232B1BBB2C8C2DB500747136 /* TabbarController.swift in Sources */,
+				23C43BC52C8C5E090005D948 /* CustomLabel.swift in Sources */,
+				23C43BCA2C8C92FE0005D948 /* ListItemsFactory.swift in Sources */,
 				232B1B9E2C8A478C00747136 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,10 +441,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		23C43BB12C8C338D0005D948 /* XCRemoteSwiftPackageReference "epoxy-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/epoxy-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		232B1BB02C8A4CC700747136 /* DataFace */ = {
+		23C43BBE2C8C4A160005D948 /* DataFace */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DataFace;
+		};
+		23C43BC02C8C4A1A0005D948 /* Epoxy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23C43BB12C8C338D0005D948 /* XCRemoteSwiftPackageReference "epoxy-ios" */;
+			productName = Epoxy;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

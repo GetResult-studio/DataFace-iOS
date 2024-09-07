@@ -1,6 +1,15 @@
 {
-  "originHash" : "d363b6f8d065ab60a4d8075f18aeff642032e2e8e902d28e846810f25c6525a3",
+  "originHash" : "86b147674477cd0cae2d90f3a36bf86d3ecbbacde5c964a00d051b9b14e97973",
   "pins" : [
+    {
+      "identity" : "epoxy-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/epoxy-ios.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "93178a5be0692261c34cbf2882ea1033a01d4f71"
+      }
+    },
     {
       "identity" : "swift",
       "kind" : "remoteSourceControl",

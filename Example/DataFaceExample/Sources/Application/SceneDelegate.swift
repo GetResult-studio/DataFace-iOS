@@ -15,8 +15,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let windowScence = scene as? UIWindowScene else { return }
     let window = UIWindow(windowScene: windowScence)
     self.window = window
-    let controller = UIViewController()
-    controller.view.backgroundColor = .red
+    let controller = TabbarController()
     window.rootViewController = controller
     window.makeKeyAndVisible()
   }

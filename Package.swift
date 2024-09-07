@@ -11,6 +11,9 @@ let package = Package(
     .library(name: "DataFaceCore", targets: ["DataFaceCore"]),
     .library(name: "DataFaceUI", targets: ["DataFaceUI"]),
   ],
+  dependencies: [
+    .package(name: "Epoxy", url: "https://github.com/airbnb/epoxy-ios", branch: "master"),
+  ],
   targets: [
     .target(
       name: "DataFace",
@@ -19,7 +22,10 @@ let package = Package(
         "DataFaceUI",
       ]),
     .target(name: "DataFaceCore"),
-    .target(name: "DataFaceUI"),
+    .target(name: "DataFaceUI", dependencies: [
+      "Epoxy",
+      "DataFaceCore",
+    ]),
   ])
 
 #if swift(>=5.6)
