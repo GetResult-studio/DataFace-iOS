@@ -13,6 +13,7 @@ let package = Package(
   ],
   dependencies: [
     .package(name: "Epoxy", url: "https://github.com/airbnb/epoxy-ios", branch: "master"),
+    .package(url: "https://github.com/airbnb/MagazineLayout", branch: "master"),
   ],
   targets: [
     .target(
@@ -24,6 +25,7 @@ let package = Package(
     .target(name: "DataFaceCore"),
     .target(name: "DataFaceUI", dependencies: [
       "Epoxy",
+      "MagazineLayout",
       "DataFaceCore",
     ]),
   ])

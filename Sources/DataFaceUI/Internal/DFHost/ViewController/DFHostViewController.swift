@@ -3,6 +3,7 @@
 
 import EpoxyCollectionView
 import EpoxyCore
+import MagazineLayout
 import UIKit
 
 // MARK: - DFHostViewController
@@ -12,13 +13,14 @@ final class DFHostViewController: CollectionViewController {
   // MARK: Lifecycle
 
   init() {
-    super.init(layout: UICollectionViewFlowLayout())
+    super.init(layout: MagazineLayout())
   }
 
   // MARK: Internal
 
   var listItemsFactory: ListItemsFactoryProtocol?
   var interactor: DFHostInteractorProtocol?
+  private(set) var viewModel: DFHostViewModel = .init(sections: [])
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,35 +29,32 @@ final class DFHostViewController: CollectionViewController {
 
   override func makeCollectionView() -> CollectionView {
     let collectionView = super.makeCollectionView()
+    collectionView.contentInsetAdjustmentBehavior = .always
     collectionView.delaysContentTouches = false
+    collectionView.delegate = self
     return collectionView
   }
 
   // MARK: Private
 
-  private var viewModel: DFHostViewModel = .init(sections: [])
-
   @SectionModelBuilder
   private var sections: [SectionModel] {
     viewModel.sections.compactMap { section in
-      switch section {
-      case .custom(let dataID, let items):
-        SectionModel(dataID: dataID) {
-          items.compactMap { item in
-            switch item {
-            case .custom(let dataID, let type, let content, let style):
-              EpoxyLogger.shared.assert(
-                listItemsFactory != nil, "Custom doesn't work without listItemsFactory")
-              return listItemsFactory?.makeItem(
-                collectionViewSize: view.frame.size,
-                dataID: dataID,
-                type: type,
-                content: content,
-                style: style)
-
-            case .unknown:
-              return nil
-            }
+      SectionModel(dataID: section.dataID) {
+        section.content.compactMap { item in
+          switch item.style.type {
+          case .custom(let name, let styleData):
+            EpoxyLogger.shared.assert(
+              listItemsFactory != nil, "Custom doesn't work without listItemsFactory")
+            let content = {
+              if case .custom(let val) = item.content { return val } else { return nil }
+            }()
+            guard let content, let styleData, !name.isEmpty else { return nil }
+            return listItemsFactory?.makeItem(
+              dataID: item.dataID,
+              type: name,
+              content: content,
+              style: styleData)
           }
         }
       }

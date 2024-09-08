@@ -17,7 +17,6 @@ public protocol ListItemsFactoryProtocol: AnyObject {
   ///
   /// - Returns: An optional `ItemModeling` instance, which represents the item to be displayed in the collection view. If `nil` is returned, no item will be created for the given inputs.
   func makeItem(
-    collectionViewSize: CGSize,
     dataID: AnyHashable,
     type: String,
     content: Data,

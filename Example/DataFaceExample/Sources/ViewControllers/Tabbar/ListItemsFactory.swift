@@ -10,7 +10,6 @@ import UIKit
 final class ListItemsFactory {
 
   private func buildLabel(
-    collectionViewSize: CGSize,
     dataID: AnyHashable,
     content: Data,
     style: Data)
@@ -24,11 +23,7 @@ final class ListItemsFactory {
       return nil
     }
 
-    let width = collectionViewSize.width
-    let height = CustomLabel.height(for: width, with: content, and: style)
-
     return CustomLabel.itemModel(dataID: dataID, content: content, style: style)
-      .flowLayoutItemSize(.init(width: width, height: height))
   }
 }
 
@@ -37,7 +32,6 @@ final class ListItemsFactory {
 extension ListItemsFactory: ListItemsFactoryProtocol {
 
   func makeItem(
-    collectionViewSize: CGSize,
     dataID: AnyHashable,
     type: String,
     content: Data,
@@ -47,7 +41,6 @@ extension ListItemsFactory: ListItemsFactoryProtocol {
     switch type {
     case "custom_label":
       return buildLabel(
-        collectionViewSize: collectionViewSize,
         dataID: dataID,
         content: content,
         style: style)

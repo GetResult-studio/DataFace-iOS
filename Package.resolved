@@ -1,5 +1,5 @@
 {
-  "originHash" : "86b147674477cd0cae2d90f3a36bf86d3ecbbacde5c964a00d051b9b14e97973",
+  "originHash" : "64a2ac3e3a43e4cfe9adc22589a07197936ea010123d66eb5b49957ff96bbcdc",
   "pins" : [
     {
       "identity" : "epoxy-ios",
@@ -8,6 +8,15 @@
       "state" : {
         "branch" : "master",
         "revision" : "93178a5be0692261c34cbf2882ea1033a01d4f71"
+      }
+    },
+    {
+      "identity" : "magazinelayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/airbnb/MagazineLayout",
+      "state" : {
+        "branch" : "master",
+        "revision" : "91ad7e5c5ce5fc9496004d5a6ad7476d046c5d21"
       }
     },
     {

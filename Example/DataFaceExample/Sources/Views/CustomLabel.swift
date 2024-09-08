@@ -6,17 +6,28 @@ import UIKit
 
 // MARK: - CustomLabel
 
-final class CustomLabel: UILabel, EpoxyableView {
+final class CustomLabel: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
   init(style: Style) {
+    label = UILabel()
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
-    font = style.font
-    numberOfLines = style.numberOfLines
+
+    addSubview(label)
+    label.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      label.leadingAnchor.constraint(equalTo: leadingAnchor),
+      label.trailingAnchor.constraint(equalTo: trailingAnchor),
+      label.topAnchor.constraint(equalTo: topAnchor),
+      label.bottomAnchor.constraint(equalTo: bottomAnchor),
+    ])
+
+    label.font = style.font
+    label.numberOfLines = style.numberOfLines
     if style.showLabelBackground {
-      backgroundColor = .secondarySystemBackground
+      label.backgroundColor = .secondarySystemBackground
     }
   }
 
@@ -40,8 +51,13 @@ final class CustomLabel: UILabel, EpoxyableView {
   typealias Content = String
 
   func setContent(_ content: String, animated _: Bool) {
-    text = content
+    label.text = content
   }
+
+  // MARK: Private
+
+  private let label: UILabel
+
 }
 
 extension CustomLabel.Style {
@@ -53,20 +69,6 @@ extension CustomLabel.Style {
     .init(
       font: UIFont.preferredFont(forTextStyle: textStyle),
       showLabelBackground: showBackground)
-  }
-}
-
-extension CustomLabel {
-  public static func height(
-    for width: CGFloat,
-    with content: Content,
-    and style: Style)
-    -> CGFloat
-  {
-    content.height(
-      forWidth: width,
-      font: style.font,
-      numberOfLines: style.numberOfLines)
   }
 }
 
