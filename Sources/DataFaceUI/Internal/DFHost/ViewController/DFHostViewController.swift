@@ -12,13 +12,13 @@ final class DFHostViewController: CollectionViewController {
 
   // MARK: Lifecycle
 
-  init() {
+  init(viewFactory: DFHostViewFactoryProtocol) {
+    self.viewFactory = viewFactory
     super.init(layout: MagazineLayout())
   }
 
   // MARK: Internal
 
-  var listItemsFactory: ListItemsFactoryProtocol?
   var interactor: DFHostInteractorProtocol?
   private(set) var viewModel: DFHostViewModel = .init(sections: [])
 
@@ -37,27 +37,17 @@ final class DFHostViewController: CollectionViewController {
 
   // MARK: Private
 
+  private let viewFactory: DFHostViewFactoryProtocol
+
   @SectionModelBuilder
   private var sections: [SectionModel] {
     viewModel.sections.compactMap { section in
       SectionModel(dataID: section.dataID) {
-        section.content.compactMap { item in
-          switch item.style.type {
-          case .custom(let name, let styleData):
-            EpoxyLogger.shared.assert(
-              listItemsFactory != nil, "Custom doesn't work without listItemsFactory")
-            let content = {
-              if case .custom(let val) = item.content { return val } else { return nil }
-            }()
-            guard let content, let styleData, !name.isEmpty else { return nil }
-            return listItemsFactory?.makeItem(
-              dataID: item.dataID,
-              type: name,
-              content: content,
-              style: styleData)
-          }
-        }
+        section.content.compactMap(viewFactory.makeItem(from:))
       }
+      .supplementaryItems(
+        ofKind: MagazineLayout.SupplementaryViewKind.sectionBackground,
+        viewFactory.makeSupplementaryViewBackground(from: section.background))
     }
   }
 }

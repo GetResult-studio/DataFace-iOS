@@ -1,13 +1,14 @@
 // Created by Aleksei Smirnov on 09/06/24.
 // Copyright © 2024 GetResult.studio. All rights reserved.
 
-import protocol DataFaceUI.ListItemsFactoryProtocol
+import protocol DataFaceUI.CustomItemsFactoryProtocol
 import protocol EpoxyCollectionView.ItemModeling
+import protocol EpoxyCollectionView.SupplementaryItemModeling
 import UIKit
 
-// MARK: - ListItemsFactory
+// MARK: - CustomItemsFactory
 
-final class ListItemsFactory {
+final class CustomItemsFactory {
 
   private func buildLabel(
     dataID: AnyHashable,
@@ -27,10 +28,9 @@ final class ListItemsFactory {
   }
 }
 
-// MARK: ListItemsFactoryProtocol
+// MARK: CustomItemsFactoryProtocol
 
-extension ListItemsFactory: ListItemsFactoryProtocol {
-
+extension CustomItemsFactory: CustomItemsFactoryProtocol {
   func makeItem(
     dataID: AnyHashable,
     type: String,

@@ -2,6 +2,7 @@
 // Copyright © 2024 GetResult.studio. All rights reserved.
 
 import EpoxyCollectionView
+import EpoxyCore
 import MagazineLayout
 import UIKit
 
@@ -16,8 +17,13 @@ extension DFHostViewController: UICollectionViewDelegateMagazineLayout {
     -> MagazineLayoutItemSizeMode
   {
     let size = viewModel.sections[indexPath.section].content[indexPath.row].style.size
-    let widthMode = size.width.widthMode
-    let heightMode = size.height.heightMode
+
+    EpoxyLogger.shared.assert(
+      size != nil,
+      "Possible error: size probably shouldn't be nil. Fallback to MagazineLayout.Default.ItemSizeMode")
+
+    let widthMode = size?.width.widthMode ?? MagazineLayout.Default.ItemSizeMode.widthMode
+    let heightMode = size?.height.heightMode ?? MagazineLayout.Default.ItemSizeMode.heightMode
     return MagazineLayoutItemSizeMode(
       widthMode: widthMode,
       heightMode: heightMode)
@@ -44,10 +50,10 @@ extension DFHostViewController: UICollectionViewDelegateMagazineLayout {
   func collectionView(
     _: UICollectionView,
     layout _: UICollectionViewLayout,
-    visibilityModeForBackgroundInSectionAtIndex _: Int)
+    visibilityModeForBackgroundInSectionAtIndex index: Int)
     -> MagazineLayoutBackgroundVisibilityMode
   {
-    .hidden
+    viewModel.sections[safe: index]?.background == nil ? .hidden : .visible
   }
 
   func collectionView(
@@ -56,7 +62,7 @@ extension DFHostViewController: UICollectionViewDelegateMagazineLayout {
     horizontalSpacingForItemsInSectionAtIndex index: Int)
     -> CGFloat
   {
-    viewModel.sections[safe: index]?.style.hSpacing ?? 8
+    viewModel.sections[safe: index]?.style.hSpacing ?? MagazineLayout.Default.HorizontalSpacing
   }
 
   func collectionView(
@@ -65,7 +71,7 @@ extension DFHostViewController: UICollectionViewDelegateMagazineLayout {
     verticalSpacingForElementsInSectionAtIndex index: Int)
     -> CGFloat
   {
-    viewModel.sections[safe: index]?.style.vSpacing ?? 8
+    viewModel.sections[safe: index]?.style.vSpacing ?? MagazineLayout.Default.VerticalSpacing
   }
 
   func collectionView(
@@ -74,7 +80,7 @@ extension DFHostViewController: UICollectionViewDelegateMagazineLayout {
     insetsForSectionAtIndex index: Int)
     -> UIEdgeInsets
   {
-    viewModel.sections[safe: index]?.style.insets?.uiEdgeInsets ?? .init(top: 8, left: 8, bottom: 8, right: 8)
+    viewModel.sections[safe: index]?.style.insets?.uiEdgeInsets ?? MagazineLayout.Default.SectionInsets
   }
 
   func collectionView(
@@ -83,11 +89,11 @@ extension DFHostViewController: UICollectionViewDelegateMagazineLayout {
     insetsForItemsInSectionAtIndex index: Int)
     -> UIEdgeInsets
   {
-    viewModel.sections[safe: index]?.style.itemsInsets?.uiEdgeInsets ?? .init(top: 8, left: 8, bottom: 8, right: 8)
+    viewModel.sections[safe: index]?.style.itemsInsets?.uiEdgeInsets ?? MagazineLayout.Default.ItemInsets
   }
 }
 
-extension DFHostViewModel.Item.Style.Size.Width {
+extension StyleDTO.Size.Width {
   fileprivate var widthMode: MagazineLayoutItemWidthMode {
     switch self {
     case .fullWidth(let respectsHorizontalInsets):
@@ -99,7 +105,7 @@ extension DFHostViewModel.Item.Style.Size.Width {
   }
 }
 
-extension DFHostViewModel.Item.Style.Size.Height {
+extension StyleDTO.Size.Height {
   fileprivate var heightMode: MagazineLayoutItemHeightMode {
     switch self {
     case .dynamic:

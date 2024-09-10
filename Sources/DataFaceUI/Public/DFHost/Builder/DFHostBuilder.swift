@@ -20,13 +20,13 @@ public final class DFHostBuilder {
 
   // MARK: Lifecycle
 
-  public init(listItemsFactory: ListItemsFactoryProtocol? = nil) {
-    self.listItemsFactory = listItemsFactory
+  public init(customItemsFactory: CustomItemsFactoryProtocol? = nil) {
+    self.customItemsFactory = customItemsFactory
   }
 
   // MARK: Private
 
-  private let listItemsFactory: ListItemsFactoryProtocol?
+  private let customItemsFactory: CustomItemsFactoryProtocol?
 }
 
 // MARK: DFHostBuilderProtocol
@@ -37,8 +37,8 @@ extension DFHostBuilder: DFHostBuilderProtocol {
     output _: any DFHostOutputDelegete)
     -> UIViewController
   {
-    let viewController = DFHostViewController()
-    viewController.listItemsFactory = listItemsFactory
+    let viewFactory = DFHostViewFactory(customItemsFactory: customItemsFactory)
+    let viewController = DFHostViewController(viewFactory: viewFactory)
 
     let router = DFHostRouter(viewController: viewController)
 

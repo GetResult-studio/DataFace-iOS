@@ -23,7 +23,7 @@ final class TabbarController: UITabBarController {
 
   // MARK: Private
 
-  private lazy var listItemsFactory = ListItemsFactory()
+  private lazy var customItemsFactory = CustomItemsFactory()
 
   private lazy var json: String = {
     let url = Bundle.main.url(forResource: "Showcase", withExtension: "json")!
@@ -32,7 +32,7 @@ final class TabbarController: UITabBarController {
   }()
 
   private lazy var showcaseViewController = DFHostBuilder(
-    listItemsFactory: listItemsFactory).build(
+    customItemsFactory: customItemsFactory).build(
     with: .init(content: .init(mode: .static(json: json))),
     output: self)
 }

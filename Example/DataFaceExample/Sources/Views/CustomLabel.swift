@@ -27,7 +27,7 @@ final class CustomLabel: UIView, EpoxyableView {
     label.font = style.font
     label.numberOfLines = style.numberOfLines
     if style.showLabelBackground {
-      label.backgroundColor = .secondarySystemBackground
+      backgroundColor = .secondarySystemBackground
     }
   }
 

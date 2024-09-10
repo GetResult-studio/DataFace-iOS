@@ -16,7 +16,7 @@
 		23C43BC12C8C4A1A0005D948 /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 23C43BC02C8C4A1A0005D948 /* Epoxy */; };
 		23C43BC52C8C5E090005D948 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C43BC42C8C5E090005D948 /* CustomLabel.swift */; };
 		23C43BC82C8C6FE30005D948 /* Showcase.json in Resources */ = {isa = PBXBuildFile; fileRef = 23C43BC72C8C6FE30005D948 /* Showcase.json */; };
-		23C43BCA2C8C92FE0005D948 /* ListItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C43BC92C8C92FE0005D948 /* ListItemsFactory.swift */; };
+		23C43BCA2C8C92FE0005D948 /* CustomItemsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C43BC92C8C92FE0005D948 /* CustomItemsFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		232B1BBA2C8C2DB500747136 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		23C43BC42C8C5E090005D948 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		23C43BC72C8C6FE30005D948 /* Showcase.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Showcase.json; sourceTree = "<group>"; };
-		23C43BC92C8C92FE0005D948 /* ListItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemsFactory.swift; sourceTree = "<group>"; };
+		23C43BC92C8C92FE0005D948 /* CustomItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemsFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				232B1BBA2C8C2DB500747136 /* TabbarController.swift */,
-				23C43BC92C8C92FE0005D948 /* ListItemsFactory.swift */,
+				23C43BC92C8C92FE0005D948 /* CustomItemsFactory.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -224,7 +224,7 @@
 				232B1B9C2C8A478C00747136 /* AppDelegate.swift in Sources */,
 				232B1BBB2C8C2DB500747136 /* TabbarController.swift in Sources */,
 				23C43BC52C8C5E090005D948 /* CustomLabel.swift in Sources */,
-				23C43BCA2C8C92FE0005D948 /* ListItemsFactory.swift in Sources */,
+				23C43BCA2C8C92FE0005D948 /* CustomItemsFactory.swift in Sources */,
 				232B1B9E2C8A478C00747136 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

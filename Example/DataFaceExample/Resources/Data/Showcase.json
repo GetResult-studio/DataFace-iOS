@@ -4,11 +4,26 @@
       "dataID": "custom_label_section_1",
       "style": {
       },
+      "background": {
+        "dataID": "custom_label_section_background_1",
+        "content": {
+          "dataID": "background_view",
+          "style": {
+            "type": "dummy",
+            "data": {
+              "cornerRadius": 10
+            },
+          },
+          "content": {
+            "backgroundColor": "#F2F2F7"
+          }
+        }
+      },
       "content": [
         {
           "dataID": "custom_label_1",
           "content": {
-            "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            "text": "Lorem Ipsum 1"
           },
           "style": {
             "type": "custom_label",
@@ -25,6 +40,30 @@
             "data": {
               "numberOfLines": 0
             }
+          }
+        },
+        {
+          "dataID": "separator",
+          "style": {
+            "type": "dummy",
+            "data": {
+              "insets": {
+                "left": 50
+              }
+            },
+            "size": {
+              "width": {
+                "type": "fullWidth",
+                "respectsHorizontalInsets": true
+              },
+              "height": {
+                "type": "static",
+                "height": 1
+              }
+            }
+          },
+          "content": {
+            "backgroundColor": "#00FF00"
           }
         }
       ]
