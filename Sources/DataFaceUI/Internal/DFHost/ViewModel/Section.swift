@@ -15,7 +15,8 @@ extension DFHostViewModel {
       dataID = try container.decode(String.self, forKey: .dataID)
       style = try container.decode(Style.self, forKey: .style)
       content = try container.decode([Item].self, forKey: .content)
-      header = try container.decodeIfPresent(Header.self, forKey: .header)
+      header = try container.decodeIfPresent(HeaderFooter.self, forKey: .header)
+      footer = try container.decodeIfPresent(HeaderFooter.self, forKey: .footer)
       background = try container.decodeIfPresent(Background.self, forKey: .background)
     }
 
@@ -43,7 +44,7 @@ extension DFHostViewModel {
       }
     }
 
-    struct Header: Decodable {
+    struct HeaderFooter: Decodable {
       let style: HeaderFooterStyleDTO
       let content: Item
 
@@ -76,7 +77,8 @@ extension DFHostViewModel {
     let dataID: AnyHashable
     let style: Style
     let content: [Item]
-    let header: Header?
+    let header: HeaderFooter?
+    let footer: HeaderFooter?
     let background: Background?
 
     // MARK: Private
@@ -86,6 +88,7 @@ extension DFHostViewModel {
       case style
       case content
       case header
+      case footer
       case background
     }
   }

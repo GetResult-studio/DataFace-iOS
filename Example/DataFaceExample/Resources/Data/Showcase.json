@@ -27,6 +27,29 @@
           }
         }
       },
+      "footer": {
+        "style": {
+          "pinToVisibleBounds": true
+        },
+        "content": {
+          "dataID": "footer_item_1",
+          "style": {
+            "type": "dummy",
+            "data": {
+              "cornerRadius": 5
+            },
+            "size": {
+              "height": {
+                "type": "static",
+                "height": 150
+              }
+            }
+          },
+          "content": {
+            "backgroundColor": "#00FF00"
+          }
+        }
+      },
       "background": {
         "content": {
           "dataID": "background_item_1",

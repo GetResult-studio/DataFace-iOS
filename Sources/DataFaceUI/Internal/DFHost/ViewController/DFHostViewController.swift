@@ -47,7 +47,10 @@ final class DFHostViewController: CollectionViewController {
       }
       .supplementaryItems(
         ofKind: MagazineLayout.SupplementaryViewKind.sectionHeader,
-        viewFactory.makeSupplementaryViewHeader(from: section.header))
+        viewFactory.makeSupplementaryViewHeaderFooter(from: section.header))
+      .supplementaryItems(
+        ofKind: MagazineLayout.SupplementaryViewKind.sectionFooter,
+        viewFactory.makeSupplementaryViewHeaderFooter(from: section.footer))
       .supplementaryItems(
         ofKind: MagazineLayout.SupplementaryViewKind.sectionBackground,
         viewFactory.makeSupplementaryViewBackground(from: section.background))

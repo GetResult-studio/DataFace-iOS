@@ -50,10 +50,19 @@ extension DFHostViewController: UICollectionViewDelegateMagazineLayout {
   func collectionView(
     _: UICollectionView,
     layout _: UICollectionViewLayout,
-    visibilityModeForFooterInSectionAtIndex _: Int)
+    visibilityModeForFooterInSectionAtIndex index: Int)
     -> MagazineLayoutFooterVisibilityMode
   {
-    .hidden
+    guard let heightMode = viewModel.sections[safe: index]?.footer?.content.style.size?.height.footerHeightMode else {
+      EpoxyLogger.shared.assert(
+        viewModel.sections[safe: index]?.footer != nil,
+        "It looks like you want to display the footer, but it won't be visible.")
+      return .hidden
+    }
+
+    let pinToVisibleBounds = viewModel.sections[safe: index]?.footer?.style.pinToVisibleBounds ?? false
+
+    return .visible(heightMode: heightMode, pinToVisibleBounds: pinToVisibleBounds)
   }
 
   func collectionView(
@@ -134,6 +143,18 @@ extension StyleDTO.Size.Height {
 
 extension StyleDTO.Size.Height {
   fileprivate var headerHeightMode: MagazineLayoutHeaderHeightMode {
+    switch self {
+    case .dynamic, .dynamicWithEstimatedHeight, .dynamicAndStretchToTallestItemInRow:
+      return .dynamic
+
+    case .static(let height):
+      return .static(height: height)
+    }
+  }
+}
+
+extension StyleDTO.Size.Height {
+  fileprivate var footerHeightMode: MagazineLayoutFooterHeightMode {
     switch self {
     case .dynamic, .dynamicWithEstimatedHeight, .dynamicAndStretchToTallestItemInRow:
       return .dynamic
