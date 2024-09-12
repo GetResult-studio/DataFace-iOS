@@ -19,7 +19,7 @@ final class DFHostViewFactory {
 
   private let customItemsFactory: CustomItemsFactoryProtocol?
 
-  private func makeSupplementaryView(for item: DFHostViewModel.Item?, dataID: AnyHashable) -> [any SupplementaryItemModeling]? {
+  private func makeSupplementaryView(for item: DFHostViewModel.Item?) -> [any SupplementaryItemModeling]? {
     guard let item else { return nil }
 
     switch item.style.type {
@@ -34,7 +34,7 @@ final class DFHostViewFactory {
 
       return [
         DummyView.supplementaryItemModel(
-          dataID: dataID,
+          dataID: item.dataID,
           content: content,
           style: styleDTO.uiStyle),
       ]
@@ -50,7 +50,7 @@ final class DFHostViewFactory {
       guard let content, let styleData, !name.isEmpty else { return nil }
 
       return customItemsFactory?.makeSupplementaryItem(
-        dataID: dataID,
+        dataID: item.dataID,
         type: name,
         content: content,
         style: styleData)
@@ -101,7 +101,7 @@ extension DFHostViewFactory: DFHostViewFactoryProtocol {
 
   func makeSupplementaryViewHeader(from header: DFHostViewModel.Section.Header?) -> [any SupplementaryItemModeling]? {
     guard let header else { return nil }
-    return makeSupplementaryView(for: header.content, dataID: header.dataID)
+    return makeSupplementaryView(for: header.content)
   }
 
   func makeSupplementaryViewBackground(
@@ -109,6 +109,6 @@ extension DFHostViewFactory: DFHostViewFactoryProtocol {
     -> [any SupplementaryItemModeling]?
   {
     guard let background else { return nil }
-    return makeSupplementaryView(for: background.content, dataID: background.dataID)
+    return makeSupplementaryView(for: background.content)
   }
 }

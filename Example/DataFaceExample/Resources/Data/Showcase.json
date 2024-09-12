@@ -5,12 +5,11 @@
       "style": {
       },
       "header": {
-        "dataID": "header_section_1",
         "style": {
           "pinToVisibleBounds": true
         },
         "content": {
-          "dataID": "section_item_1",
+          "dataID": "header_item_1",
           "style": {
             "type": "dummy",
             "data": {
@@ -29,9 +28,8 @@
         }
       },
       "background": {
-        "dataID": "custom_label_section_background_1",
         "content": {
-          "dataID": "background_view",
+          "dataID": "background_item_1",
           "style": {
             "type": "dummy",
             "data": {

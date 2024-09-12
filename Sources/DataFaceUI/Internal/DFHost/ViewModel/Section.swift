@@ -44,26 +44,22 @@ extension DFHostViewModel {
     }
 
     struct Header: Decodable {
-      let dataID: String
       let style: HeaderFooterStyleDTO
       let content: Item
 
       private enum CodingKeys: CodingKey {
-        case dataID
         case style
         case content
       }
 
       init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        dataID = try container.decode(String.self, forKey: .dataID)
         style = try container.decode(HeaderFooterStyleDTO.self, forKey: .style)
         content = try container.decode(Item.self, forKey: .content)
       }
     }
 
     struct Background: Decodable {
-      let dataID: String
       let content: Item
 
       private enum CodingKeys: CodingKey {
@@ -73,7 +69,6 @@ extension DFHostViewModel {
 
       init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        dataID = try container.decode(String.self, forKey: .dataID)
         content = try container.decode(Item.self, forKey: .content)
       }
     }
