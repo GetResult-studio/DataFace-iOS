@@ -18,6 +18,45 @@ final class DFHostViewFactory {
   // MARK: Private
 
   private let customItemsFactory: CustomItemsFactoryProtocol?
+
+  private func makeSupplementaryView(for item: DFHostViewModel.Item?, dataID: AnyHashable) -> [any SupplementaryItemModeling]? {
+    guard let item else { return nil }
+
+    switch item.style.type {
+    case .dummyView(let styleDTO):
+      guard
+        let content = {
+          if case .dummyView(let data) = item.content { return data.uiContent } else { return nil }
+        }()
+      else {
+        return nil
+      }
+
+      return [
+        DummyView.supplementaryItemModel(
+          dataID: dataID,
+          content: content,
+          style: styleDTO.uiStyle),
+      ]
+
+    case .custom(let name, let styleData):
+      EpoxyLogger.shared.assert(
+        customItemsFactory != nil, "Custom doesn't work without customItemsFactory")
+
+      let content = {
+        if case .custom(let data) = item.content { return data } else { return nil }
+      }()
+
+      guard let content, let styleData, !name.isEmpty else { return nil }
+
+      return customItemsFactory?.makeSupplementaryItem(
+        dataID: dataID,
+        type: name,
+        content: content,
+        style: styleData)
+    }
+  }
+
 }
 
 // MARK: DFHostViewFactoryProtocol
@@ -60,44 +99,16 @@ extension DFHostViewFactory: DFHostViewFactoryProtocol {
     }
   }
 
+  func makeSupplementaryViewHeader(from header: DFHostViewModel.Section.Header?) -> [any SupplementaryItemModeling]? {
+    guard let header else { return nil }
+    return makeSupplementaryView(for: header.content, dataID: header.dataID)
+  }
+
   func makeSupplementaryViewBackground(
     from background: DFHostViewModel.Section.Background?)
     -> [any SupplementaryItemModeling]?
   {
     guard let background else { return nil }
-
-    switch background.content.style.type {
-    case .dummyView(let styleDTO):
-      guard
-        let content = {
-          if case .dummyView(let data) = background.content.content { return data.uiContent } else { return nil }
-        }()
-      else {
-        return nil
-      }
-
-      return [
-        DummyView.supplementaryItemModel(
-          dataID: background.dataID,
-          content: content,
-          style: styleDTO.uiStyle),
-      ]
-
-    case .custom(let name, let styleData):
-      EpoxyLogger.shared.assert(
-        customItemsFactory != nil, "Custom doesn't work without customItemsFactory")
-
-      let content = {
-        if case .custom(let data) = background.content.content { return data } else { return nil }
-      }()
-
-      guard let content, let styleData, !name.isEmpty else { return nil }
-
-      return customItemsFactory?.makeSupplementaryItem(
-        dataID: background.dataID,
-        type: name,
-        content: content,
-        style: styleData)
-    }
+    return makeSupplementaryView(for: background.content, dataID: background.dataID)
   }
 }

@@ -16,13 +16,13 @@ extension DFHostViewController: UICollectionViewDelegateMagazineLayout {
     sizeModeForItemAt indexPath: IndexPath)
     -> MagazineLayoutItemSizeMode
   {
-    let size = viewModel.sections[indexPath.section].content[indexPath.row].style.size
+    let size = viewModel.sections[safe: indexPath.section]?.content[safe: indexPath.row]?.style.size
 
     EpoxyLogger.shared.assert(
       size != nil,
       "Possible error: size probably shouldn't be nil. Fallback to MagazineLayout.Default.ItemSizeMode")
 
-    let widthMode = size?.width.widthMode ?? MagazineLayout.Default.ItemSizeMode.widthMode
+    let widthMode = size?.width?.widthMode ?? MagazineLayout.Default.ItemSizeMode.widthMode
     let heightMode = size?.height.heightMode ?? MagazineLayout.Default.ItemSizeMode.heightMode
     return MagazineLayoutItemSizeMode(
       widthMode: widthMode,
@@ -32,10 +32,19 @@ extension DFHostViewController: UICollectionViewDelegateMagazineLayout {
   func collectionView(
     _: UICollectionView,
     layout _: UICollectionViewLayout,
-    visibilityModeForHeaderInSectionAtIndex _: Int)
+    visibilityModeForHeaderInSectionAtIndex index: Int)
     -> MagazineLayoutHeaderVisibilityMode
   {
-    .hidden
+    guard let heightMode = viewModel.sections[safe: index]?.header?.content.style.size?.height.headerHeightMode else {
+      EpoxyLogger.shared.assert(
+        viewModel.sections[safe: index]?.header != nil,
+        "It looks like you want to display the header, but it won't be visible.")
+      return .hidden
+    }
+
+    let pinToVisibleBounds = viewModel.sections[safe: index]?.header?.style.pinToVisibleBounds ?? false
+
+    return .visible(heightMode: heightMode, pinToVisibleBounds: pinToVisibleBounds)
   }
 
   func collectionView(
@@ -116,6 +125,18 @@ extension StyleDTO.Size.Height {
 
     case .dynamicAndStretchToTallestItemInRow:
       return .dynamicAndStretchToTallestItemInRow
+
+    case .static(let height):
+      return .static(height: height)
+    }
+  }
+}
+
+extension StyleDTO.Size.Height {
+  fileprivate var headerHeightMode: MagazineLayoutHeaderHeightMode {
+    switch self {
+    case .dynamic, .dynamicWithEstimatedHeight, .dynamicAndStretchToTallestItemInRow:
+      return .dynamic
 
     case .static(let height):
       return .static(height: height)

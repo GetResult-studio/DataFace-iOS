@@ -43,7 +43,7 @@ struct StyleDTO: Decodable {
 
       init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let type = try container.decode(Type.self, forKey: .type)
+        let type = try container.decode(`Type`.self, forKey: .type)
 
         switch type {
         case .fullWidth:
@@ -111,7 +111,7 @@ struct StyleDTO: Decodable {
       }
     }
 
-    let width: Width
+    let width: Width?
     let height: Height
   }
 
@@ -128,4 +128,10 @@ struct StyleDTO: Decodable {
   private enum CodingKeys: String, CodingKey {
     case type, size, data
   }
+}
+
+// MARK: - HeaderFooterStyleDTO
+
+struct HeaderFooterStyleDTO: Decodable {
+  let pinToVisibleBounds: Bool
 }

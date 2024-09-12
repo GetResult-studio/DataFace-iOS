@@ -4,6 +4,30 @@
       "dataID": "custom_label_section_1",
       "style": {
       },
+      "header": {
+        "dataID": "header_section_1",
+        "style": {
+          "pinToVisibleBounds": true
+        },
+        "content": {
+          "dataID": "section_item_1",
+          "style": {
+            "type": "dummy",
+            "data": {
+              "cornerRadius": 5
+            },
+            "size": {
+              "height": {
+                "type": "static",
+                "height": 50
+              }
+            }
+          },
+          "content": {
+            "backgroundColor": "#0000FF"
+          }
+        }
+      },
       "background": {
         "dataID": "custom_label_section_background_1",
         "content": {

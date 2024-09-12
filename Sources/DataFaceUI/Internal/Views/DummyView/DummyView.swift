@@ -19,6 +19,8 @@ final class DummyView: UIView, EpoxyableView {
         leading: insets.left,
         bottom: insets.bottom,
         trailing: insets.right)
+    } else {
+      directionalLayoutMargins = .zero
     }
 
     addSubview(view)

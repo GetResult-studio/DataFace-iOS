@@ -15,6 +15,7 @@ extension DFHostViewModel {
       dataID = try container.decode(String.self, forKey: .dataID)
       style = try container.decode(Style.self, forKey: .style)
       content = try container.decode([Item].self, forKey: .content)
+      header = try container.decodeIfPresent(Header.self, forKey: .header)
       background = try container.decodeIfPresent(Background.self, forKey: .background)
     }
 
@@ -42,6 +43,25 @@ extension DFHostViewModel {
       }
     }
 
+    struct Header: Decodable {
+      let dataID: String
+      let style: HeaderFooterStyleDTO
+      let content: Item
+
+      private enum CodingKeys: CodingKey {
+        case dataID
+        case style
+        case content
+      }
+
+      init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        dataID = try container.decode(String.self, forKey: .dataID)
+        style = try container.decode(HeaderFooterStyleDTO.self, forKey: .style)
+        content = try container.decode(Item.self, forKey: .content)
+      }
+    }
+
     struct Background: Decodable {
       let dataID: String
       let content: Item
@@ -61,6 +81,7 @@ extension DFHostViewModel {
     let dataID: AnyHashable
     let style: Style
     let content: [Item]
+    let header: Header?
     let background: Background?
 
     // MARK: Private
@@ -69,6 +90,7 @@ extension DFHostViewModel {
       case dataID
       case style
       case content
+      case header
       case background
     }
   }

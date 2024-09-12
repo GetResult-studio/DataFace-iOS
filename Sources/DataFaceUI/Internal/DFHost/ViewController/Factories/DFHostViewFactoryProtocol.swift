@@ -9,6 +9,10 @@ protocol DFHostViewFactoryProtocol: AnyObject {
 
   func makeItem(from item: DFHostViewModel.Item?) -> (any ItemModeling)?
 
+  func makeSupplementaryViewHeader(
+    from header: DFHostViewModel.Section.Header?)
+    -> [SupplementaryItemModeling]?
+
   func makeSupplementaryViewBackground(
     from background: DFHostViewModel.Section.Background?)
     -> [SupplementaryItemModeling]?
