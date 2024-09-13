@@ -20,7 +20,12 @@ final class DFHostViewController: CollectionViewController {
   // MARK: Internal
 
   var interactor: DFHostInteractorProtocol?
-  private(set) var viewModel: DFHostViewModel = .init(sections: [])
+
+  private(set) var viewModel: DFHostViewModel = .init(screen: .init(), sections: []) {
+    didSet {
+      collectionView.selectionStyle = viewModel.screen.selectionStyle.uiSelectionStyle
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()

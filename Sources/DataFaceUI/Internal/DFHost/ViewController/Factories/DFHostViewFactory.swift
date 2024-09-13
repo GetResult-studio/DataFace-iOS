@@ -99,7 +99,10 @@ extension DFHostViewFactory: DFHostViewFactoryProtocol {
     }
   }
 
-  func makeSupplementaryViewHeaderFooter(from headerFooter: DFHostViewModel.Section.HeaderFooter?) -> [any SupplementaryItemModeling]? {
+  func makeSupplementaryViewHeaderFooter(
+    from headerFooter: DFHostViewModel.Section.HeaderFooter?)
+    -> [any SupplementaryItemModeling]?
+  {
     guard let headerFooter else { return nil }
     return makeSupplementaryView(for: headerFooter.content)
   }
