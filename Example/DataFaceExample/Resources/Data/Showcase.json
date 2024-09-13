@@ -1,6 +1,7 @@
 {
   "screen": {
-    
+    "backgroundColor": "#00FF00",
+    "selectionStyle": "#FF0000"
   },
   "sections": [
     {
@@ -113,6 +114,33 @@
           "content": {
             "backgroundColor": "#00FF00"
           }
+        },
+        {
+          "dataID": "label_2",
+          "style": {
+            "type": "label",
+            "data": {
+              "insets": {
+                "top": 50,
+                "left": 20,
+                "bottom": 50,
+                "right": 150
+              },
+              "alignment": "bottomTrailing",
+              "textAlignment": "trailing"
+            },
+            "size": {
+              "width": {
+                "type": "fullWidth",
+                "respectsHorizontalInsets": true
+              },
+              "height": {
+                "type": "static",
+                "height": 600
+              }
+            }
+          },
+          "content": "لتبباااا"
         }
       ]
     }

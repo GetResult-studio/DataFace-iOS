@@ -23,6 +23,7 @@ final class DFHostViewController: CollectionViewController {
 
   private(set) var viewModel: DFHostViewModel = .init(screen: .init(), sections: []) {
     didSet {
+      collectionView.backgroundColor = viewModel.screen.backgroundColor.uiColor
       collectionView.selectionStyle = viewModel.screen.selectionStyle.uiSelectionStyle
     }
   }

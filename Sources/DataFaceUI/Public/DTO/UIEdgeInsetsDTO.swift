@@ -1,6 +1,7 @@
 // Created by Aleksei Smirnov on 09/08/24.
 // Copyright © 2024 GetResult.studio. All rights reserved.
 
+import SwiftUI
 import UIKit
 
 public struct UIEdgeInsetsDTO: Decodable {
@@ -34,6 +35,10 @@ public struct UIEdgeInsetsDTO: Decodable {
 
   public var uiEdgeInsets: UIEdgeInsets {
     .init(top: top, left: left, bottom: bottom, right: right)
+  }
+
+  public var swiftUIEdgeInsets: EdgeInsets {
+    .init(top: top, leading: left, bottom: bottom, trailing: right)
   }
 
   // MARK: Private

@@ -23,6 +23,22 @@ final class DFHostViewFactory {
     guard let item else { return nil }
 
     switch item.style.type {
+    case .label(let styleDTO):
+      guard
+        let content = {
+          if case .label(let data) = item.content { return data } else { return nil }
+        }()
+      else {
+        return nil
+      }
+
+      return [
+        Label(
+          content: content,
+          style: styleDTO.uiStyle)
+          .supplementaryItemModel(dataID: item.dataID),
+      ]
+
     case .dummyView(let styleDTO):
       guard
         let content = {
@@ -62,10 +78,23 @@ final class DFHostViewFactory {
 // MARK: DFHostViewFactoryProtocol
 
 extension DFHostViewFactory: DFHostViewFactoryProtocol {
-
   func makeItem(from item: DFHostViewModel.Item?) -> (any ItemModeling)? {
     guard let item else { return nil }
     switch item.style.type {
+    case .label(let styleDTO):
+      guard
+        let content = {
+          if case .label(let data) = item.content { return data } else { return nil }
+        }()
+      else {
+        return nil
+      }
+
+      return Label(
+        content: content,
+        style: styleDTO.uiStyle)
+        .itemModel(dataID: item.dataID)
+
     case .dummyView(let styleDTO):
       guard
         let content = {

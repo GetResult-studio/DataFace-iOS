@@ -6,6 +6,7 @@ import Foundation
 // MARK: - StyleData
 
 enum StyleData: Decodable {
+  case label(style: LabelStyleDTO)
   case dummyView(style: DummyViewStyleDTO)
   case custom(name: String, data: Data?)
 }
@@ -20,6 +21,10 @@ struct StyleDTO: Decodable {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     let type = try container.decode(String.self, forKey: .type)
     switch type {
+    case "label":
+      let data = try container.decode(LabelStyleDTO.self, forKey: .data)
+      self.type = .label(style: data)
+
     case "dummy":
       let data = try container.decode(DummyViewStyleDTO.self, forKey: .data)
       self.type = .dummyView(style: data)
@@ -116,6 +121,7 @@ struct StyleDTO: Decodable {
   }
 
   enum `Type`: Decodable {
+    case label(style: LabelStyleDTO)
     case dummyView(style: DummyViewStyleDTO)
     case custom(name: String, data: Data?)
   }

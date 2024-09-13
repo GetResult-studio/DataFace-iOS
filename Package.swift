@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
   name: "DataFace",
-  platforms: [.iOS(.v13)],
+  platforms: [.iOS(.v17)],
   products: [
     .library(name: "DataFace", targets: ["DataFace"]),
     .library(name: "DataFaceCore", targets: ["DataFaceCore"]),

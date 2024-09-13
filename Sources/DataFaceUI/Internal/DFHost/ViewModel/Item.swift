@@ -16,6 +16,10 @@ extension DFHostViewModel {
       style = try container.decode(StyleDTO.self, forKey: .style)
 
       switch style.type {
+      case .label:
+        let data = try container.decode(String.self, forKey: .content)
+        content = .label(data: data)
+
       case .dummyView:
         let data = try container.decode(DummyViewContentDTO.self, forKey: .content)
         content = .dummyView(data: data)
@@ -29,8 +33,9 @@ extension DFHostViewModel {
     // MARK: Internal
 
     enum Content: Decodable {
-      case custom(data: Data?)
+      case label(data: String)
       case dummyView(data: DummyViewContentDTO)
+      case custom(data: Data?)
     }
 
     let dataID: AnyHashable

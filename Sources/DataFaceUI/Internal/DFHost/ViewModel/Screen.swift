@@ -10,12 +10,16 @@ extension DFHostViewModel {
 
     // MARK: Lifecycle
 
-    init(selectionStyle: SelectionStyle = .noBackground) {
+    init(backgroundColor: String? = nil, selectionStyle: SelectionStyle = .noBackground) {
+      self.backgroundColor = backgroundColor
       self.selectionStyle = selectionStyle
     }
 
     init(from decoder: any Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
+
+      backgroundColor = try container.decodeIfPresent(String.self, forKey: .backgroundColor)
+
       let selectionStyle = try container.decodeIfPresent(String.self, forKey: .selectionStyle)
       self.selectionStyle = SelectionStyle(selectionStyle)
     }
@@ -35,12 +39,13 @@ extension DFHostViewModel {
       }
     }
 
+    let backgroundColor: String?
     let selectionStyle: SelectionStyle
 
     // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
-      case selectionStyle
+      case backgroundColor, selectionStyle
     }
   }
 }
