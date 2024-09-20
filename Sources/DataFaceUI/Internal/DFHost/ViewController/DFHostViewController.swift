@@ -49,7 +49,13 @@ final class DFHostViewController: CollectionViewController {
   private var sections: [SectionModel] {
     viewModel.sections.compactMap { section in
       SectionModel(dataID: section.dataID) {
-        section.content.compactMap(viewFactory.makeItem(from:))
+        section.content.compactMap { item in
+          viewFactory.makeItem(from: item)?.eraseToAnyItemModel()
+            .didSelect { [weak self] _ in
+              self?.interactor?.performActionsIfPossible(
+                item.actions.filter { $0.type == .didSelect })
+            }
+        }
       }
       .supplementaryItems(
         ofKind: MagazineLayout.SupplementaryViewKind.sectionHeader,

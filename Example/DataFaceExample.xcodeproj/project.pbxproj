@@ -12,6 +12,8 @@
 		232B1BA52C8A478E00747136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 232B1BA42C8A478E00747136 /* Assets.xcassets */; };
 		232B1BA82C8A478E00747136 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 232B1BA72C8A478E00747136 /* Base */; };
 		232B1BBB2C8C2DB500747136 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B1BBA2C8C2DB500747136 /* TabbarController.swift */; };
+		2353D0872C9D90320042E0C9 /* ShowcaseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353D0862C9D90320042E0C9 /* ShowcaseBuilder.swift */; };
+		2353D0892C9D90640042E0C9 /* ShowcaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353D0882C9D90640042E0C9 /* ShowcaseInteractor.swift */; };
 		23C43BBF2C8C4A160005D948 /* DataFace in Frameworks */ = {isa = PBXBuildFile; productRef = 23C43BBE2C8C4A160005D948 /* DataFace */; };
 		23C43BC12C8C4A1A0005D948 /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 23C43BC02C8C4A1A0005D948 /* Epoxy */; };
 		23C43BC52C8C5E090005D948 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C43BC42C8C5E090005D948 /* CustomLabel.swift */; };
@@ -27,6 +29,8 @@
 		232B1BA72C8A478E00747136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		232B1BA92C8A478E00747136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		232B1BBA2C8C2DB500747136 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		2353D0862C9D90320042E0C9 /* ShowcaseBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseBuilder.swift; sourceTree = "<group>"; };
+		2353D0882C9D90640042E0C9 /* ShowcaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseInteractor.swift; sourceTree = "<group>"; };
 		23C43BC42C8C5E090005D948 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		23C43BC72C8C6FE30005D948 /* Showcase.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Showcase.json; sourceTree = "<group>"; };
 		23C43BC92C8C92FE0005D948 /* CustomItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemsFactory.swift; sourceTree = "<group>"; };
@@ -92,7 +96,8 @@
 		232B1BB72C8A525800747136 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				23C43BC32C8C5D240005D948 /* ViewControllers */,
+				232B1BB92C8C2D9300747136 /* Tabbar */,
+				2353D0852C9D900A0042E0C9 /* Showcase */,
 				23C43BC22C8C5D010005D948 /* Views */,
 				232B1BB22C8A508D00747136 /* Application */,
 			);
@@ -114,9 +119,18 @@
 			isa = PBXGroup;
 			children = (
 				232B1BBA2C8C2DB500747136 /* TabbarController.swift */,
-				23C43BC92C8C92FE0005D948 /* CustomItemsFactory.swift */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		2353D0852C9D900A0042E0C9 /* Showcase */ = {
+			isa = PBXGroup;
+			children = (
+				23C43BC92C8C92FE0005D948 /* CustomItemsFactory.swift */,
+				2353D0862C9D90320042E0C9 /* ShowcaseBuilder.swift */,
+				2353D0882C9D90640042E0C9 /* ShowcaseInteractor.swift */,
+			);
+			path = Showcase;
 			sourceTree = "<group>";
 		};
 		23C43BC22C8C5D010005D948 /* Views */ = {
@@ -125,14 +139,6 @@
 				23C43BC42C8C5E090005D948 /* CustomLabel.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		23C43BC32C8C5D240005D948 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				232B1BB92C8C2D9300747136 /* Tabbar */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		23C43BC62C8C6FCA0005D948 /* Data */ = {
@@ -221,6 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2353D0892C9D90640042E0C9 /* ShowcaseInteractor.swift in Sources */,
+				2353D0872C9D90320042E0C9 /* ShowcaseBuilder.swift in Sources */,
 				232B1B9C2C8A478C00747136 /* AppDelegate.swift in Sources */,
 				232B1BBB2C8C2DB500747136 /* TabbarController.swift in Sources */,
 				23C43BC52C8C5E090005D948 /* CustomLabel.swift in Sources */,

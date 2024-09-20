@@ -28,6 +28,8 @@ extension DFHostViewModel {
         let contentData = try container.decodeNestedContainerAsDataIfPresent(forKey: .content)
         content = .custom(data: contentData)
       }
+
+      actions = try container.decodeIfPresent([Action].self, forKey: .actions) ?? []
     }
 
     // MARK: Internal
@@ -41,11 +43,12 @@ extension DFHostViewModel {
     let dataID: AnyHashable
     let style: StyleDTO
     let content: Content
+    let actions: [Action]
 
     // MARK: Private
 
     private enum CodingKeys: String, CodingKey {
-      case dataID, type, content, style
+      case dataID, type, content, style, actions
     }
   }
 }

@@ -89,7 +89,13 @@
             "data": {
               "numberOfLines": 0
             }
-          }
+          },
+          "actions": [
+            {
+              "type": "didSelect",
+              "url": "inAppShema://performAction"
+            }
+          ]
         },
         {
           "dataID": "separator",
@@ -140,7 +146,13 @@
               }
             }
           },
-          "content": "لتبباااا"
+          "content": "لتبباااا",
+          "actions": [
+            {
+              "type": "didSelect",
+              "url": "https://apple.com"
+            }
+          ]
         }
       ]
     }

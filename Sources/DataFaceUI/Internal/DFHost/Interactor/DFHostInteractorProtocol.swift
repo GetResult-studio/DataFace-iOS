@@ -3,4 +3,5 @@
 
 protocol DFHostInteractorProtocol: AnyObject {
   func viewDidLoad()
+  func performActionsIfPossible(_ actions: [Action])
 }

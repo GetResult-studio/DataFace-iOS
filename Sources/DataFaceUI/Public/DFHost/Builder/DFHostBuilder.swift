@@ -5,7 +5,11 @@ import UIKit
 
 // MARK: - DFHostOutputDelegete
 
-public protocol DFHostOutputDelegete: AnyObject { }
+public protocol DFHostOutputDelegete: AnyObject {
+  func viewDidLoad()
+  func startLoadingData()
+  func didRequestToPerformAction(_ action: Action)
+}
 
 // MARK: - DFHostBuilderProtocol
 
@@ -34,7 +38,7 @@ public final class DFHostBuilder {
 extension DFHostBuilder: DFHostBuilderProtocol {
   public func build(
     with input: DFHostInput,
-    output _: any DFHostOutputDelegete)
+    output: any DFHostOutputDelegete)
     -> UIViewController
   {
     let viewFactory = DFHostViewFactory(customItemsFactory: customItemsFactory)
@@ -45,6 +49,7 @@ extension DFHostBuilder: DFHostBuilderProtocol {
     let presenter = DFHostPresenter(viewController: viewController)
     let interactor = DFHostInteractor(input: input, router: router, presenter: presenter)
 
+    interactor.output = output
     router.interactor = interactor
     viewController.interactor = interactor
 
