@@ -3,14 +3,14 @@
 
 import Foundation
 
-// MARK: DFHostViewModel.Item
+// MARK: - DFHostViewModel.Item
 
 extension DFHostViewModel {
-  struct Item: Decodable {
+  public struct Item: Decodable {
 
     // MARK: Lifecycle
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
       dataID = try container.decode(String.self, forKey: .dataID)
       style = try container.decode(StyleDTO.self, forKey: .style)
@@ -50,5 +50,13 @@ extension DFHostViewModel {
     private enum CodingKeys: String, CodingKey {
       case dataID, type, content, style, actions
     }
+  }
+}
+
+// MARK: - DFHostViewModel.Item + Equatable
+
+extension DFHostViewModel.Item: Equatable {
+  public static func == (lhs: DFHostViewModel.Item, rhs: DFHostViewModel.Item) -> Bool {
+    lhs.dataID == rhs.dataID
   }
 }

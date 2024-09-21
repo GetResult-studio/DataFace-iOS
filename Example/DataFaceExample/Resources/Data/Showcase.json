@@ -172,7 +172,13 @@
             },
             "data": {
             }
-          }
+          },
+          "actions": [
+            {
+              "type": "willDisplay",
+              "url": "inAppShema://update"
+            }
+          ]
         }
       ]
     }

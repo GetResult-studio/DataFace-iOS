@@ -6,7 +6,7 @@ import UIKit
 
 // MARK: UIScrollViewDelegate
 
-extension DFHostViewController {
+extension DFHostViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     collectionView.scrollViewDidScroll(scrollView)
   }

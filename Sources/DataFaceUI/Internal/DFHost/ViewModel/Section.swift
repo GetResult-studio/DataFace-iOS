@@ -1,9 +1,10 @@
 // Created by Aleksei Smirnov on 09/10/24.
 // Copyright © 2024 GetResult.studio. All rights reserved.
 
+import DataFaceCore
 import Foundation
 
-// MARK: DFHostViewModel.Section
+// MARK: - DFHostViewModel.Section
 
 extension DFHostViewModel {
   struct Section: Decodable {
@@ -76,7 +77,7 @@ extension DFHostViewModel {
 
     let dataID: AnyHashable
     let style: Style
-    let content: [Item]
+    private(set) var content: [Item]
     let header: HeaderFooter?
     let footer: HeaderFooter?
     let background: Background?
@@ -91,5 +92,11 @@ extension DFHostViewModel {
       case footer
       case background
     }
+  }
+}
+
+extension DFHostViewModel.Section {
+  mutating func applyContent(changes: Change<DFHostViewModel.Item>) {
+    content = content.applying(changes)
   }
 }

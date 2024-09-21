@@ -1,6 +1,7 @@
 // Created by Aleksei Smirnov on 09/06/24.
 // Copyright © 2024 GetResult.studio. All rights reserved.
 
+import DataFaceCore
 import UIKit
 
 // MARK: - DFHostOutputDelegete
@@ -8,14 +9,24 @@ import UIKit
 public protocol DFHostOutputDelegete: AnyObject {
   func viewDidLoad()
   func startLoadingData()
-  func didRequestToPerformAction(_ action: Action)
+
+  func didRequestToPerformAction(
+    sectionDataID: AnyHashable,
+    itemDataID: AnyHashable,
+    _ action: Action)
+}
+
+// MARK: - DFDFHostInputDelegate
+
+public protocol DFDFHostInputDelegate: AnyObject {
+  func applyChanges(in sectionDataID: AnyHashable, with changes: Change<DFHostViewModel.Item>)
 }
 
 // MARK: - DFHostBuilderProtocol
 
 public protocol DFHostBuilderProtocol: AnyObject {
 
-  func build(with input: DFHostInput, output: DFHostOutputDelegete) -> UIViewController
+  func build(with input: DFHostInput, output: DFHostOutputDelegete) -> Module<DFDFHostInputDelegate, DFHostOutputDelegete>
 }
 
 // MARK: - DFHostBuilder
@@ -39,7 +50,7 @@ extension DFHostBuilder: DFHostBuilderProtocol {
   public func build(
     with input: DFHostInput,
     output: any DFHostOutputDelegete)
-    -> UIViewController
+    -> Module<DFDFHostInputDelegate, DFHostOutputDelegete>
   {
     let viewFactory = DFHostViewFactory(customItemsFactory: customItemsFactory)
     let viewController = DFHostViewController(viewFactory: viewFactory)
@@ -53,6 +64,6 @@ extension DFHostBuilder: DFHostBuilderProtocol {
     router.interactor = interactor
     viewController.interactor = interactor
 
-    return viewController
+    return .init(viewController: viewController, input: interactor, output: output)
   }
 }

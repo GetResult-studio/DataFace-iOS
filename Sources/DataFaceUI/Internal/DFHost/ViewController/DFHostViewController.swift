@@ -53,14 +53,17 @@ final class DFHostViewController: CollectionViewController {
           viewFactory.makeItem(from: item)?.eraseToAnyItemModel()
             .didSelect { [weak self] _ in
               self?.interactor?.performActionsIfPossible(
+                sectionDataID: section.dataID, itemDataID: item.dataID,
                 item.actions.filter { $0.type == .didSelect })
             }
             .willDisplay { [weak self] _ in
               self?.interactor?.performActionsIfPossible(
+                sectionDataID: section.dataID, itemDataID: item.dataID,
                 item.actions.filter { $0.type == .willDisplay })
             }
             .didEndDisplaying { [weak self] _ in
               self?.interactor?.performActionsIfPossible(
+                sectionDataID: section.dataID, itemDataID: item.dataID,
                 item.actions.filter { $0.type == .didEndDisplaying })
             }
         }

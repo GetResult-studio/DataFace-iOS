@@ -29,5 +29,4 @@ public struct Action: Decodable {
   private enum CodingKeys: String, CodingKey {
     case type, url
   }
-
 }

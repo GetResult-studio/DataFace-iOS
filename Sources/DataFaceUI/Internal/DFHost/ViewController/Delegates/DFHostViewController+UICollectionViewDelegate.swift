@@ -6,10 +6,10 @@ import UIKit
 
 // MARK: UICollectionViewDelegate
 
-extension DFHostViewController {
+extension DFHostViewController: UICollectionViewDelegate {
 
   func collectionView(
-    collectionView: UICollectionView,
+    _ collectionView: UICollectionView,
     targetIndexPathForMoveFromItemAt originalIndexPath: IndexPath,
     toProposedIndexPath proposedIndexPath: IndexPath)
     -> IndexPath
@@ -21,7 +21,7 @@ extension DFHostViewController {
   }
 
   func collectionView(
-    collectionView: UICollectionView,
+    _ collectionView: UICollectionView,
     willDisplay cell: UICollectionViewCell,
     forItemAt indexPath: IndexPath)
   {
@@ -29,7 +29,7 @@ extension DFHostViewController {
   }
 
   func collectionView(
-    collectionView: UICollectionView,
+    _ collectionView: UICollectionView,
     didEndDisplaying cell: UICollectionViewCell,
     forItemAt indexPath: IndexPath)
   {
@@ -40,7 +40,7 @@ extension DFHostViewController {
   }
 
   func collectionView(
-    collectionView: UICollectionView,
+    _ collectionView: UICollectionView,
     willDisplaySupplementaryView view: UICollectionReusableView,
     forElementKind elementKind: String,
     at indexPath: IndexPath)
@@ -53,7 +53,7 @@ extension DFHostViewController {
   }
 
   func collectionView(
-    collectionView: UICollectionView,
+    _ collectionView: UICollectionView,
     didEndDisplayingSupplementaryView view: UICollectionReusableView,
     forElementOfKind elementKind: String,
     at indexPath: IndexPath)
@@ -118,7 +118,7 @@ extension DFHostViewController {
   }
 
   func collectionView(
-    collectionView: UICollectionView,
+    _ collectionView: UICollectionView,
     transitionLayoutForOldLayout fromLayout: UICollectionViewLayout,
     newLayout toLayout: UICollectionViewLayout)
     -> UICollectionViewTransitionLayout

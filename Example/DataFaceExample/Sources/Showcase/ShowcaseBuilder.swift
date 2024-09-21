@@ -11,12 +11,15 @@ final class ShowcaseBuilder {
   func build(json: String) -> UIViewController {
     let interactor = ShowcaseInteractor()
     customItemsFactory.delegate = interactor
-    let viewController = DFHostBuilder(
+
+    let module = DFHostBuilder(
       customItemsFactory: customItemsFactory).build(
       with: .init(content: .init(mode: .static(json: json))),
       output: interactor)
 
-    return viewController
+    interactor.inputDelegate = module.input
+
+    return module.viewController
   }
 
   // MARK: Private

@@ -1,0 +1,35 @@
+{
+  "insertions": [
+    {
+      "dataID": "custom_label_2",
+      "content": {
+        "text": "Lorem Ipsum 2"
+      },
+      "style": {
+        "type": "custom_label",
+        "size": {
+          "width": {
+            "type": "fullWidth",
+            "respectsHorizontalInsets": true
+          },
+          "height": {
+            "type": "static",
+            "height": 50
+          }
+        },
+        "data": {
+          "numberOfLines": 0
+        }
+      },
+      "actions": [
+        {
+          "type": "didSelect",
+          "url": "inAppShema://performAction"
+        }
+      ]
+    }
+  ],
+  "removals": [],
+  "moves": [],
+  "updates": []
+}

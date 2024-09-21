@@ -1,6 +1,7 @@
 // Created by Aleksei Smirnov on 09/06/24.
 // Copyright © 2024 GetResult.studio. All rights reserved.
 
+import DataFaceCore
 import Epoxy
 import Foundation
 
@@ -20,6 +21,8 @@ final class DFHostPresenter {
 
   // MARK: Private
 
+  private var viewModel: DFHostViewModel?
+
   private func mapJSONToViewModel(_ json: String) -> DFHostViewModel? {
     guard let data = json.data(using: .utf8) else {
       EpoxyLogger.shared.assertionFailure("It seems json is empty")
@@ -37,6 +40,13 @@ extension DFHostPresenter: DFHostPresenterProtocol {
       EpoxyLogger.shared.assertionFailure("Decoding failed")
       return // TODO: - Status View
     }
+    self.viewModel = viewModel
+    viewController?.updateUI(viewModel: viewModel)
+  }
+
+  func applyChanges(sectionDataID: AnyHashable, changes: Change<DFHostViewModel.Item>) {
+    viewModel?.updateItems(in: sectionDataID, changes: changes)
+    guard let viewModel else { return }
     viewController?.updateUI(viewModel: viewModel)
   }
 }

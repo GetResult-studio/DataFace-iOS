@@ -7,7 +7,7 @@ import UIKit
 
 // MARK: - DFHostViewModel
 
-final class DFHostViewModel: Decodable {
+public final class DFHostViewModel: Decodable {
 
   // MARK: Lifecycle
 
@@ -16,7 +16,7 @@ final class DFHostViewModel: Decodable {
     self.sections = sections
   }
 
-  init(from decoder: Decoder) throws {
+  public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     screen = try container.decode(Screen.self, forKey: .screen)
     sections = try container.decode([Section].self, forKey: .sections)
@@ -25,12 +25,19 @@ final class DFHostViewModel: Decodable {
   // MARK: Internal
 
   let screen: Screen
-  let sections: [Section]
+  private(set) var sections: [Section]
 
   // MARK: Private
 
   private enum CodingKeys: String, CodingKey {
     case screen, sections
   }
+}
 
+extension DFHostViewModel {
+  func updateItems(in sectionDataID: AnyHashable, changes: Change<Item>) {
+    if let index = sections.firstIndex(where: { $0.dataID == sectionDataID }) {
+      sections[index].applyContent(changes: changes)
+    }
+  }
 }

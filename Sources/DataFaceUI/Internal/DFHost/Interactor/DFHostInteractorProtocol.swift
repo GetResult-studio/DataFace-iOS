@@ -3,5 +3,5 @@
 
 protocol DFHostInteractorProtocol: AnyObject {
   func viewDidLoad()
-  func performActionsIfPossible(_ actions: [Action])
+  func performActionsIfPossible(sectionDataID: AnyHashable, itemDataID: AnyHashable, _ actions: [Action])
 }
