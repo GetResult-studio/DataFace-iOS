@@ -10,17 +10,15 @@ public struct Action: Decodable {
   public init(from decoder: any Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     type = try container.decode(`Type`.self, forKey: .type)
-
-    switch type {
-    case .didSelect:
-      url = try container.decode(URL.self, forKey: .url)
-    }
+    url = try container.decode(URL.self, forKey: .url)
   }
 
   // MARK: Public
 
   public enum `Type`: String, Decodable {
     case didSelect
+    case willDisplay
+    case didEndDisplaying
   }
 
   public let type: `Type`

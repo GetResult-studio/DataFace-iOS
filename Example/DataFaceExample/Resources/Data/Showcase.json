@@ -153,6 +153,26 @@
               "url": "https://apple.com"
             }
           ]
+        },
+        {
+          "dataID": "spinner_view",
+          "content": {
+          },
+          "style": {
+            "type": "spinner_view",
+            "size": {
+              "width": {
+                "type": "fullWidth",
+                "respectsHorizontalInsets": true
+              },
+              "height": {
+                "type": "static",
+                "height": 72
+              }
+            },
+            "data": {
+            }
+          }
         }
       ]
     }

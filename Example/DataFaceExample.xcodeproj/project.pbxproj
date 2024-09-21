@@ -14,6 +14,9 @@
 		232B1BBB2C8C2DB500747136 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232B1BBA2C8C2DB500747136 /* TabbarController.swift */; };
 		2353D0872C9D90320042E0C9 /* ShowcaseBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353D0862C9D90320042E0C9 /* ShowcaseBuilder.swift */; };
 		2353D0892C9D90640042E0C9 /* ShowcaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353D0882C9D90640042E0C9 /* ShowcaseInteractor.swift */; };
+		2353D08C2C9EA85F0042E0C9 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353D08B2C9EA85F0042E0C9 /* SpinnerView.swift */; };
+		2353D08E2C9EA8890042E0C9 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353D08D2C9EA8890042E0C9 /* Loadable.swift */; };
+		2353D0902C9EA8AB0042E0C9 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2353D08F2C9EA8AB0042E0C9 /* ActivityIndicatorView.swift */; };
 		23C43BBF2C8C4A160005D948 /* DataFace in Frameworks */ = {isa = PBXBuildFile; productRef = 23C43BBE2C8C4A160005D948 /* DataFace */; };
 		23C43BC12C8C4A1A0005D948 /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 23C43BC02C8C4A1A0005D948 /* Epoxy */; };
 		23C43BC52C8C5E090005D948 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C43BC42C8C5E090005D948 /* CustomLabel.swift */; };
@@ -31,6 +34,9 @@
 		232B1BBA2C8C2DB500747136 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		2353D0862C9D90320042E0C9 /* ShowcaseBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseBuilder.swift; sourceTree = "<group>"; };
 		2353D0882C9D90640042E0C9 /* ShowcaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseInteractor.swift; sourceTree = "<group>"; };
+		2353D08B2C9EA85F0042E0C9 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		2353D08D2C9EA8890042E0C9 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		2353D08F2C9EA8AB0042E0C9 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		23C43BC42C8C5E090005D948 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		23C43BC72C8C6FE30005D948 /* Showcase.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Showcase.json; sourceTree = "<group>"; };
 		23C43BC92C8C92FE0005D948 /* CustomItemsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomItemsFactory.swift; sourceTree = "<group>"; };
@@ -133,9 +139,20 @@
 			path = Showcase;
 			sourceTree = "<group>";
 		};
+		2353D08A2C9EA84C0042E0C9 /* Spinner */ = {
+			isa = PBXGroup;
+			children = (
+				2353D08B2C9EA85F0042E0C9 /* SpinnerView.swift */,
+				2353D08D2C9EA8890042E0C9 /* Loadable.swift */,
+				2353D08F2C9EA8AB0042E0C9 /* ActivityIndicatorView.swift */,
+			);
+			path = Spinner;
+			sourceTree = "<group>";
+		};
 		23C43BC22C8C5D010005D948 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2353D08A2C9EA84C0042E0C9 /* Spinner */,
 				23C43BC42C8C5E090005D948 /* CustomLabel.swift */,
 			);
 			path = Views;
@@ -228,11 +245,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2353D0892C9D90640042E0C9 /* ShowcaseInteractor.swift in Sources */,
+				2353D0902C9EA8AB0042E0C9 /* ActivityIndicatorView.swift in Sources */,
 				2353D0872C9D90320042E0C9 /* ShowcaseBuilder.swift in Sources */,
+				2353D08E2C9EA8890042E0C9 /* Loadable.swift in Sources */,
 				232B1B9C2C8A478C00747136 /* AppDelegate.swift in Sources */,
 				232B1BBB2C8C2DB500747136 /* TabbarController.swift in Sources */,
 				23C43BC52C8C5E090005D948 /* CustomLabel.swift in Sources */,
 				23C43BCA2C8C92FE0005D948 /* CustomItemsFactory.swift in Sources */,
+				2353D08C2C9EA85F0042E0C9 /* SpinnerView.swift in Sources */,
 				232B1B9E2C8A478C00747136 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -41,6 +41,14 @@ final class CustomItemsFactory {
         self?.delegate?.didSelectLabel(dataID: dataID)
       }
   }
+
+  private func buildSpinnerView(
+    dataID: AnyHashable)
+    -> (any ItemModeling)?
+  {
+    SpinnerView.itemModel(dataID: dataID)
+      .selectionStyle(.noBackground)
+  }
 }
 
 // MARK: CustomItemsFactoryProtocol
@@ -59,6 +67,9 @@ extension CustomItemsFactory: CustomItemsFactoryProtocol {
         dataID: dataID,
         content: content,
         style: style)
+
+    case "spinner_view":
+      return buildSpinnerView(dataID: dataID)
 
     default:
       return nil

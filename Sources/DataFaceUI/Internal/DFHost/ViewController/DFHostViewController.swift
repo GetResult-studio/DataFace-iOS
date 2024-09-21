@@ -21,7 +21,7 @@ final class DFHostViewController: CollectionViewController {
 
   var interactor: DFHostInteractorProtocol?
 
-  private(set) var viewModel: DFHostViewModel = .init(screen: .init(), sections: []) {
+  private(set) var viewModel: DFHostViewModel = .init() {
     didSet {
       collectionView.backgroundColor = viewModel.screen.backgroundColor.uiColor
       collectionView.selectionStyle = viewModel.screen.selectionStyle.uiSelectionStyle
@@ -54,6 +54,14 @@ final class DFHostViewController: CollectionViewController {
             .didSelect { [weak self] _ in
               self?.interactor?.performActionsIfPossible(
                 item.actions.filter { $0.type == .didSelect })
+            }
+            .willDisplay { [weak self] _ in
+              self?.interactor?.performActionsIfPossible(
+                item.actions.filter { $0.type == .willDisplay })
+            }
+            .didEndDisplaying { [weak self] _ in
+              self?.interactor?.performActionsIfPossible(
+                item.actions.filter { $0.type == .didEndDisplaying })
             }
         }
       }

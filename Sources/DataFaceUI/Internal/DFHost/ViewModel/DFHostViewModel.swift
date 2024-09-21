@@ -7,17 +7,13 @@ import UIKit
 
 // MARK: - DFHostViewModel
 
-struct DFHostViewModel: Decodable {
-  let screen: Screen
-  let sections: [Section]
+final class DFHostViewModel: Decodable {
 
-  init(screen: Screen, sections: [Section]) {
+  // MARK: Lifecycle
+
+  init(screen: Screen = .init(), sections: [Section] = []) {
     self.screen = screen
     self.sections = sections
-  }
-
-  private enum CodingKeys: String, CodingKey {
-    case screen, sections
   }
 
   init(from decoder: Decoder) throws {
@@ -25,4 +21,16 @@ struct DFHostViewModel: Decodable {
     screen = try container.decode(Screen.self, forKey: .screen)
     sections = try container.decode([Section].self, forKey: .sections)
   }
+
+  // MARK: Internal
+
+  let screen: Screen
+  let sections: [Section]
+
+  // MARK: Private
+
+  private enum CodingKeys: String, CodingKey {
+    case screen, sections
+  }
+
 }
